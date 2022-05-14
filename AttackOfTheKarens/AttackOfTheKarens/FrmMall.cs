@@ -46,10 +46,33 @@ namespace AttackOfTheKarens {
         Top = top,
         Left = left,
         Width = CELL_SIZE,
-        Height = CELL_SIZE,
+        Height = CELL_SIZE, 
       };
     }
+    private ProgressBar CreateProgbar(int value, int top, int left)
+    {
+      return new ProgressBar()
+        {
+          Value = value,
+          Top = top,
+          Left = left,
+          Maximum = value,
+          Minimum = 0,
+        };
+    }
 
+    private Label CreateLabel(string text, int top, int left)
+    {
+      return new Label()
+        {
+          Text = text,
+          Top = top,
+          Left = left,
+          BackColor = Color.Transparent,
+          ForeColor = Color.White,
+          Font = new Font("ComicSans", 12, FontStyle.Bold)
+        };
+    }
     private PictureBox CreateWall(Color color, Image img, int top, int left) {
       PictureBox picWall = CreatePic(img, top, left);
       picWall.Image.Tint(color);
@@ -62,12 +85,16 @@ namespace AttackOfTheKarens {
       int left = 0;
 
       PictureBox pic = null;
+      ProgressBar progbar = null;
+      Label label = null;
       foreach (char[] array in map) {
         foreach (char c in array) {
           switch (c) {
             case 'K':
-              pic = CreatePic(Properties.Resources.karen, top, left);
-              Store s = new Store(new Karen(pic) {
+              pic = CreatePic(Properties.Resources.karen, top+10, left+10);
+              progbar = CreateProgbar(0, top-20, left);
+              label = CreateLabel("", top-20, left-30);
+              Store s = new Store(new Karen(pic, progbar, label) {
                 Row = top / CELL_SIZE,
                 Col = left / CELL_SIZE,
               });
@@ -92,8 +119,10 @@ namespace AttackOfTheKarens {
             case 'h': pic = CreateWall(color, Properties.Resources.h, top, left); break;
           }
           left += CELL_SIZE;
-          if (pic != null) {
+          if (pic != null && progbar != null) {
             panMall.Controls.Add(pic);
+            panMall.Controls.Add(progbar);
+            panMall.Controls.Add(label);
           }
         }
         left = 0;
@@ -103,13 +132,18 @@ namespace AttackOfTheKarens {
       picOwner.BringToFront();
       panMall.Width = CELL_SIZE * map[0].Length + PANEL_PADDING;
       panMall.Height = CELL_SIZE * map.Length + PANEL_PADDING;
-      this.Width = panMall.Width + FORM_PADDING + 75;
+      this.Width = panMall.Width + FORM_PADDING + 150;
       this.Height = panMall.Height + FORM_PADDING;
       lblMoneySaved.Left = this.Width - lblMoneySaved.Width - 10;
       lblMoneySavedLabel.Left = this.Width - lblMoneySavedLabel.Width - 10;
       lblMoneySavedLabel.Top = 0;
-      lblMoneySaved.Top = lblMoneySavedLabel.Height + 5;
-    }
+      lblMoneySaved.Top = lblMoneySavedLabel.Height + 10;
+      lblKarensOffended.Left = this.Width - lblKarensOffended.Width - 25;
+      lblKarensOffendedLabel.Left = this.Width - lblKarensOffendedLabel.Width - 10;
+      lblKarensOffendedLabel.Top = 100;
+      lblKarensOffended.Top = lblKarensOffendedLabel.Height + 110;
+
+        }
 
     private void FrmMall_Load(object sender, EventArgs e) {
       stores = new List<Store>();
@@ -117,9 +151,9 @@ namespace AttackOfTheKarens {
       GenerateMall(colors[rand.Next(colors.Length)]);
       tmrKarenSpawner.Interval = rand.Next(1000, 5000);
       tmrKarenSpawner.Enabled = true;
-      player = new SoundPlayer();
-      player.SoundLocation = "data/mall music.wav";
-      player.PlayLooping();
+      //player = new SoundPlayer();
+      //player.SoundLocation = "data/mall music.wav";
+      //player.PlayLooping();
     }
 
     private bool IsInBounds(int newRow, int newCol) {
@@ -205,7 +239,8 @@ namespace AttackOfTheKarens {
     }
 
     private void tmrUpdateGame_Tick(object sender, EventArgs e) {
-      lblMoneySaved.Text = Game.Score.ToString("$ #,##0.00");
+      lblMoneySaved.Text = Game.Score.ToString("$ 0.00");
+      lblKarensOffended.Text = Game.KarensOffended.ToString();
     }
   }
 }

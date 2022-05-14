@@ -3,15 +3,17 @@ using System.Windows.Forms;
 
 namespace KarenLogic {
   public static class Game {
-    public static float Score { get; set; }
+    public static int Score { get; set; }
+    public static int KarensOffended { get; set; }
     public static List<Form> openForms;
 
     static Game() {
       openForms = new List<Form>(); 
     }
 
-    public static void AddToScore(float amount) {
+    public static void AddToScore(int amount) {
       Score += amount;
+      KarensOffended += 1;
     }
 
     public static void CloseAll() {
