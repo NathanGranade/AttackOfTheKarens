@@ -13,6 +13,8 @@ namespace KarenLogic {
     public int Col { get; set; }
     public int DefaultHealth { get; private set; }
     public int CurrHealth { get; private set; }
+    public int KarenWorth { get; private set; }
+    public int OffendedKarens { get; private set; }
     public bool IsPresent { get; private set; }
 
     /// <summary>
@@ -31,12 +33,16 @@ namespace KarenLogic {
 
     public Karen(PictureBox pic, ProgressBar progbar, Label label) { 
       this.DefaultHealth = 10;
+      this.KarenWorth = 5;
+      this.OffendedKarens = 0;
+
       this.pic = pic;
       this.pic.Visible = false;
       this.progbar = progbar;
       this.progbar.Visible = false;
       this.label = label;
       this.label.Visible = false;
+
       this.IsPresent = false;
       }
 
@@ -45,10 +51,12 @@ namespace KarenLogic {
       this.progbar.Maximum = this.CurrHealth;
       this.progbar.Value = this.CurrHealth;
       this.label.Text = this.CurrHealth.ToString();
+
       this.pic.Visible = true;
       this.progbar.Visible = true;
       this.label.Visible = true;
       this.IsPresent = true;
+
       this.label.BringToFront();
       this.progbar.BringToFront();
       this.pic.BringToFront();
@@ -57,16 +65,22 @@ namespace KarenLogic {
     public void Damage(int amount) {
       CurrHealth -= amount;
       if (CurrHealth <= 0) {
-        if (Game.KarensOffended > 10)
-            Game.AddToScore(10);
-        else if (Game.KarensOffended > 50)
-            Game.AddToScore(20);
-        else 
-            Game.AddToScore(5);
+        // Added by Nathan Granade
+        // Increments money earned by 10 for every 10 Karens eliminated
+        this.OffendedKarens++;
+        if (this.OffendedKarens <= 10)
+            Game.AddToScore(this.KarenWorth);
+        else{ 
+            this.KarenWorth += 10;
+            Game.AddToScore(this.KarenWorth);
+            this.OffendedKarens = 0;
+            }
+
         this.pic.Visible = false;
         this.IsPresent = false;
         this.progbar.Visible = false;
         this.label.Visible = false;
+
         this.CurrHealth = this.DefaultHealth+10;
         this.DefaultHealth = this.CurrHealth;
         this.progbar.Maximum = this.CurrHealth;

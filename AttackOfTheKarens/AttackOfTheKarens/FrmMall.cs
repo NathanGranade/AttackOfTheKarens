@@ -49,6 +49,8 @@ namespace AttackOfTheKarens {
         Height = CELL_SIZE, 
       };
     }
+    // Added by Nathan Granade
+    // Creates a progress bar to emulate a Karen health bar
     private ProgressBar CreateProgbar(int value, int top, int left)
     {
       return new ProgressBar()
@@ -60,7 +62,9 @@ namespace AttackOfTheKarens {
           Minimum = 0,
         };
     }
-
+    
+    // Added by Nathan Granade
+    // Creates a label for Karen health
     private Label CreateLabel(string text, int top, int left)
     {
       return new Label()
@@ -138,6 +142,8 @@ namespace AttackOfTheKarens {
       lblMoneySavedLabel.Left = this.Width - lblMoneySavedLabel.Width - 10;
       lblMoneySavedLabel.Top = 0;
       lblMoneySaved.Top = lblMoneySavedLabel.Height + 10;
+      // Added by Nathan Granade
+      // Adds a new label to track how many Karens you have eliminated
       lblKarensOffended.Left = this.Width - lblKarensOffended.Width - 25;
       lblKarensOffendedLabel.Left = this.Width - lblKarensOffendedLabel.Width - 10;
       lblKarensOffendedLabel.Top = 100;
