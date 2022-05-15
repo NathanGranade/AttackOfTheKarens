@@ -1,23 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace KarenLogic {
-  public static class Game {
-    public static float Score { get; set; }
-    public static List<Form> openForms;
+namespace KarenLogic
+{
+    public static class Game
+    {
+        public static float Score { get; set; }
+        public static float Level { get; set; }
+        public static List<Form> openForms;
 
-    static Game() {
-      openForms = new List<Form>(); 
-    }
+        static Game()
+        {
+            openForms = new List<Form>();
+        }
 
-    public static void AddToScore(float amount) {
-      Score += amount;
-    }
+        public static void AddToScore(float amount)
+        {
+            Score += amount;
+        }
 
-    public static void CloseAll() {
-      for (int i = 0; i < openForms.Count; i++) {
-        openForms[i].Close();
-      }
+        public static void AddToLevel(float LevelUp)
+        {
+            Level += LevelUp;
+        }
+        public static void CloseAll()
+        {
+            for (int i = 0; i < openForms.Count; i++)
+            {
+                openForms[i].Close();
+            }
+        }
     }
-  }
 }
