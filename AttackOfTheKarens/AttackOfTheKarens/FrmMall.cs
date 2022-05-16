@@ -162,23 +162,32 @@ namespace AttackOfTheKarens
             lblLevelUpLabel.Top = 100;
             lblLevelUp.Top = lblLevelUpLabel.Height + 110;
             // Added by Nathan Granade
-            // Adds a new label to track how many Karens you have eliminated
+            // Positions label properly on the screen
             lblKarensOffended.Left = this.Width - lblKarensOffended.Width - 25;
             lblKarensOffendedLabel.Left = this.Width - lblKarensOffendedLabel.Width - 25;
             lblKarensOffendedLabel.Top = 200;
             lblKarensOffended.Top = lblKarensOffendedLabel.Height + 210;
             // Added by Nathan Granade
-            // Adds a new label to track how much each Karen is worth
+            // Positions label properly on the screen
             lblKarenWorth.Left = this.Width - lblKarenWorth.Width - 25;
             lblKarenWorthLabel.Left = this.Width - lblKarenWorthLabel.Width - 25;
             lblKarenWorthLabel.Top = 300;
             lblKarenWorth.Top = lblKarenWorthLabel.Height + 310;
             // Added by Nathan Granade
-            // Adds a new label to track how much damage the owner deals
+            // Positions label properly on the screen
             lblDamage.Left = this.Width - lblDamage.Width - 25;
             lblDamageLabel.Left = this.Width - lblDamageLabel.Width - 25;
             lblDamageLabel.Top = 400;
             lblDamage.Top = lblDamageLabel.Height + 410;
+            // Added by Nathan Granade
+            // Positions button properly on the screen
+            btnMoneyUpgrade.Left = this.Width - btnMoneyUpgrade.Width - 25;
+            btnMoneyUpgrade.Top = 500;
+            // Added by Nathan Granade
+            // Positions button properly on the screen
+            btnDamageUpgrade.Left = this.Width - btnDamageUpgrade.Width - 25;
+            btnDamageUpgrade.Top = 600;
+
         }
 
         private void FrmMall_Load(object sender, EventArgs e)
