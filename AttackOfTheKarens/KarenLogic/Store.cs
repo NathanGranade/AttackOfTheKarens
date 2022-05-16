@@ -4,19 +4,22 @@
     {
         private Karen karen;
         private bool containsOwner;
-        private float LevelScore;
-        private float Lvl;
+        private int LevelScore;
+        private int Lvl;
+        private int GameScore;
 
         public Store(Karen karen)
         {
             this.karen = karen;
             this.LevelScore = 0;
             this.Lvl = 0;
+            this.GameScore = 0;
         }
 
         public void ActivateTheKaren()
         {
-            karen.Appear();
+            if (!karen.IsPresent)
+                karen.Appear();
         }
 
         public void OwnerWalksIn()
@@ -33,11 +36,12 @@
         {
             if (karen.IsPresent && containsOwner)
             {
-                karen.Damage(1);
-                karen.LvlUp((int)Lvl);
-                if (Game.Score >= this.LevelScore + 5)
-                    this.Lvl++;
-                LevelScore = Game.Score;
+                karen.Damage(Game.Dmg);
+                karen.LvlUp(Lvl);
+                if (Game.Score >= this.LevelScore + 10)
+                    Game.Dmg++;
+                    this.GameScore = Game.Score;
+                    LevelScore = Game.Score;
             }
         }
     }

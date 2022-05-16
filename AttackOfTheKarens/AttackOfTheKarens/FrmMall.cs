@@ -56,7 +56,34 @@ namespace AttackOfTheKarens
                 Height = CELL_SIZE,
             };
         }
+        // Added by Nathan Granade
+        // Creates a progress bar to emulate a Karen health bar
+        private ProgressBar CreateProgbar(int value, int top, int left)
+        {
+            return new ProgressBar()
+            {
+                Value = value,
+                Top = top,
+                Left = left,
+                Maximum = value,
+                Minimum = 0,
+            };
+        }
 
+        // Added by Nathan Granade
+        // Creates a label for Karen health
+        private Label CreateLabel(string text, int top, int left)
+        {
+            return new Label()
+            {
+                Text = text,
+                Top = top,
+                Left = left,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Font = new Font("ComicSans", 12, FontStyle.Bold)
+            };
+        }
         private PictureBox CreateWall(Color color, Image img, int top, int left)
         {
             PictureBox picWall = CreatePic(img, top, left);
@@ -71,6 +98,8 @@ namespace AttackOfTheKarens
             int left = 0;
 
             PictureBox pic = null;
+            ProgressBar progbar = null;
+            Label label = null;
             foreach (char[] array in map)
             {
                 foreach (char c in array)
@@ -78,8 +107,10 @@ namespace AttackOfTheKarens
                     switch (c)
                     {
                         case 'K':
-                            pic = CreatePic(Properties.Resources.karen, top, left);
-                            Store s = new Store(new Karen(pic)
+                            pic = CreatePic(Properties.Resources.karen, top+10, left+10);
+                            progbar = CreateProgbar(0, top - 20, left);
+                            label = CreateLabel("", top - 20, left - 30);
+                            Store s = new Store(new Karen(pic, progbar, label)
                             {
                                 Row = top / CELL_SIZE,
                                 Col = left / CELL_SIZE,
@@ -108,6 +139,8 @@ namespace AttackOfTheKarens
                     if (pic != null)
                     {
                         panMall.Controls.Add(pic);
+                        panMall.Controls.Add(progbar);
+                        panMall.Controls.Add(label);
                     }
                 }
                 left = 0;
@@ -117,17 +150,35 @@ namespace AttackOfTheKarens
             picOwner.BringToFront();
             panMall.Width = CELL_SIZE * map[0].Length + PANEL_PADDING;
             panMall.Height = CELL_SIZE * map.Length + PANEL_PADDING;
-            this.Width = panMall.Width + FORM_PADDING + 75;
+            this.Width = panMall.Width + FORM_PADDING + 150;
             this.Height = panMall.Height + FORM_PADDING;
             lblMoneySaved.Left = this.Width - lblMoneySaved.Width - 10;
-            lblMoneySavedLabel.Left = this.Width - lblMoneySavedLabel.Width - 10;
+            lblMoneySavedLabel.Left = this.Width - lblMoneySavedLabel.Width - 25;
             lblMoneySavedLabel.Top = 0;
-            lblMoneySaved.Top = lblMoneySavedLabel.Height + 5;
+            lblMoneySaved.Top = lblMoneySavedLabel.Height + 10;
             //Set Level Up label
-            lblLevelUp.Left = this.Width - lblLevelUp.Width - 200;
-            lblLevelUpLabel.Left = this.Width - lblLevelUpLabel.Width - 200;
-            lblLevelUpLabel.Top = 0;
-            lblLevelUp.Top = lblLevelUpLabel.Height + 5;
+            lblLevelUp.Left = this.Width - lblLevelUp.Width - 25;
+            lblLevelUpLabel.Left = this.Width - lblLevelUpLabel.Width - 25;
+            lblLevelUpLabel.Top = 100;
+            lblLevelUp.Top = lblLevelUpLabel.Height + 110;
+            // Added by Nathan Granade
+            // Adds a new label to track how many Karens you have eliminated
+            lblKarensOffended.Left = this.Width - lblKarensOffended.Width - 25;
+            lblKarensOffendedLabel.Left = this.Width - lblKarensOffendedLabel.Width - 25;
+            lblKarensOffendedLabel.Top = 200;
+            lblKarensOffended.Top = lblKarensOffendedLabel.Height + 210;
+            // Added by Nathan Granade
+            // Adds a new label to track how much each Karen is worth
+            lblKarenWorth.Left = this.Width - lblKarenWorth.Width - 25;
+            lblKarenWorthLabel.Left = this.Width - lblKarenWorthLabel.Width - 25;
+            lblKarenWorthLabel.Top = 300;
+            lblKarenWorth.Top = lblKarenWorthLabel.Height + 310;
+            // Added by Nathan Granade
+            // Adds a new label to track how much damage the owner deals
+            lblDamage.Left = this.Width - lblDamage.Width - 25;
+            lblDamageLabel.Left = this.Width - lblDamageLabel.Width - 25;
+            lblDamageLabel.Top = 400;
+            lblDamage.Top = lblDamageLabel.Height + 410;
         }
 
         private void FrmMall_Load(object sender, EventArgs e)
@@ -243,7 +294,10 @@ namespace AttackOfTheKarens
         private void tmrUpdateGame_Tick(object sender, EventArgs e)
         {
             lblMoneySaved.Text = Game.Score.ToString("$ #,##0.00");
-            lblLevelUp.Text = Game.Level.ToString("#,##000");
+            lblLevelUp.Text = Game.Level.ToString();
+            lblKarensOffended.Text = Game.KarensOffended.ToString();
+            lblKarenWorth.Text = Game.KarenWorth.ToString("$ #,##0.00");
+            lblDamage.Text = Game.Dmg.ToString();
         }
     }
 }
