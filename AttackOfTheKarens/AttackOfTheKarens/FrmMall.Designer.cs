@@ -46,6 +46,7 @@
             this.lblDamageLabel = new System.Windows.Forms.Label();
             this.lblKarenWorth = new System.Windows.Forms.Label();
             this.lblDamage = new System.Windows.Forms.Label();
+            this.btnDemo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panMall
@@ -221,6 +222,16 @@
             this.lblDamage.Text = "0";
             this.lblDamage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnDemo
+            // 
+            this.btnDemo.Location = new System.Drawing.Point(2, 2);
+            this.btnDemo.Name = "btnDemo";
+            this.btnDemo.Size = new System.Drawing.Size(88, 23);
+            this.btnDemo.TabIndex = 11;
+            this.btnDemo.Text = "Demo Mode";
+            this.btnDemo.UseVisualStyleBackColor = true;
+            this.btnDemo.Click += new System.EventHandler(this.btnDemo_Click);
+            // 
             // FrmMall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -228,6 +239,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1171, 698);
+            this.Controls.Add(this.btnDemo);
             this.Controls.Add(this.lblDamage);
             this.Controls.Add(this.lblKarenWorth);
             this.Controls.Add(this.lblDamageLabel);
@@ -272,5 +284,6 @@
         private System.Windows.Forms.Label lblDamageLabel;
         private System.Windows.Forms.Label lblKarenWorth;
         private System.Windows.Forms.Label lblDamage;
+        private System.Windows.Forms.Button btnDemo;
     }
 }

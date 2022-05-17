@@ -330,5 +330,10 @@ namespace AttackOfTheKarens
                 Game.Dmg *= 2;
             }
         }
+
+        private void btnDemo_Click(object sender, EventArgs e)
+        {
+            Game.Score = 100000;
+        }
     }
 }
