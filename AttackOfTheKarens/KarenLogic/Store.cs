@@ -40,8 +40,8 @@
                 karen.LvlUp(Lvl);
                 if (Game.Score >= this.LevelScore + 10)
                     Game.Dmg++;
-                    this.GameScore = Game.Score;
-                    LevelScore = Game.Score;
+                this.GameScore = Game.Score;
+                LevelScore = Game.Score;
             }
         }
     }
