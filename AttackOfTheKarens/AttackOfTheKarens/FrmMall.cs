@@ -156,7 +156,8 @@ namespace AttackOfTheKarens
             lblMoneySavedLabel.Left = this.Width - lblMoneySavedLabel.Width - 25;
             lblMoneySavedLabel.Top = 0;
             lblMoneySaved.Top = lblMoneySavedLabel.Height + 10;
-            //Set Level Up label
+            // Added by Jakira Williams
+            // Set position for Level Up label
             lblLevelUp.Left = this.Width - lblLevelUp.Width - 25;
             lblLevelUpLabel.Left = this.Width - lblLevelUpLabel.Width - 25;
             lblLevelUpLabel.Top = 100;

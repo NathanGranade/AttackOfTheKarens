@@ -28,7 +28,8 @@ namespace KarenLogic
             Score += amount;
             KarensOffended += 1;
         }
-
+        // Added by Jakira Williams
+        // Level increment
         public static void AddToLevel(int LevelUp)
         {
             Level += LevelUp;

@@ -91,7 +91,8 @@ namespace KarenLogic
             this.progbar.Value = this.CurrHealth;
             this.label.Text = this.CurrHealth.ToString();
         }
-
+        // Added by Jakira Williams
+        // Level Increment
         public void LvlUp(int LevelUp)
         {
             Lvl -= LevelUp;
