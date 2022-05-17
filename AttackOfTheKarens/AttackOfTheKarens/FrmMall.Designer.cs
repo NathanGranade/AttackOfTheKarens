@@ -160,6 +160,7 @@
             this.btnMoneyUpgrade.Text = "Upgrade Money Gained";
             this.btnMoneyUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnMoneyUpgrade.UseVisualStyleBackColor = true;
+            this.btnMoneyUpgrade.Click += new System.EventHandler(this.btnMoneyUpgrade_Click);
             // 
             // btnDamageUpgrade
             // 
@@ -170,6 +171,7 @@
             this.btnDamageUpgrade.Text = "Upgrade Damage Dealt";
             this.btnDamageUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDamageUpgrade.UseVisualStyleBackColor = true;
+            this.btnDamageUpgrade.Click += new System.EventHandler(this.btnDamageUpgrade_Click);
             // 
             // lblKarenWorthLabel
             // 

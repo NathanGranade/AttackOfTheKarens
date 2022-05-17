@@ -308,5 +308,15 @@ namespace AttackOfTheKarens
             lblKarenWorth.Text = Game.KarenWorth.ToString("$ #,##0.00");
             lblDamage.Text = Game.Dmg.ToString();
         }
+
+        private void btnMoneyUpgrade_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnDamageUpgrade_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
