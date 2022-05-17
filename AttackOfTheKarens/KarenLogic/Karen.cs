@@ -67,17 +67,8 @@ namespace KarenLogic
             CurrHealth -= amount;
             if (CurrHealth <= 0)
             {
-                // Added by Nathan Granade
-                // Increments money earned by 10 for every 10 Karens eliminated
                 this.OffendedKarens++;
-                if (this.OffendedKarens <= 10)
-                    Game.AddToScore(Game.KarenWorth);
-                else
-                {
-                    Game.KarenWorth += 10;
-                    Game.AddToScore(Game.KarenWorth);
-                    this.OffendedKarens = 0;
-                }
+                Game.AddToScore(Game.KarenWorth);
 
                 this.pic.Visible = false;
                 this.IsPresent = false;

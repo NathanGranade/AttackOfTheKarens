@@ -302,13 +302,13 @@ namespace AttackOfTheKarens
 
         private void tmrUpdateGame_Tick(object sender, EventArgs e)
         {
-            lblMoneySaved.Text = Game.Score.ToString("$ #,#00.00");
+            lblMoneySaved.Text = Game.Score.ToString("$ #,#0.00");
             lblLevelUp.Text = Game.Level.ToString();
             lblKarensOffended.Text = Game.KarensOffended.ToString();
-            lblKarenWorth.Text = Game.KarenWorth.ToString("$ #,#00.00");
+            lblKarenWorth.Text = Game.KarenWorth.ToString("$ #,#0.00");
             lblDamage.Text = Game.Dmg.ToString();
-            btnMoneyUpgrade.Text = "Upgrade Money Gained\nCost: " + Game.MoneyUpgrade.ToString("$ #,#00.00");
-            btnDamageUpgrade.Text = "Upgrade Damage Dealt\nCost: " + Game.DmgUpgrade.ToString("$ #,#00.00");
+            btnMoneyUpgrade.Text = "Upgrade Money Gained\nCost: " + Game.MoneyUpgrade.ToString("$ #,#0.00");
+            btnDamageUpgrade.Text = "Upgrade Damage Dealt\nCost: " + Game.DmgUpgrade.ToString("$ #,#0.00");
         }
 
         private void btnMoneyUpgrade_Click(object sender, EventArgs e)
