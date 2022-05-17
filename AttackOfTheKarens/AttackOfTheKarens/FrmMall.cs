@@ -198,7 +198,7 @@ namespace AttackOfTheKarens
             tmrKarenSpawner.Interval = rand.Next(1000, 5000);
             tmrKarenSpawner.Enabled = true;
             player = new SoundPlayer();
-            player.SoundLocation = "data/mall music.wav";
+            //player.SoundLocation = "data/mall music.wav";
             player.PlayLooping();
         }
 
@@ -307,16 +307,28 @@ namespace AttackOfTheKarens
             lblKarensOffended.Text = Game.KarensOffended.ToString();
             lblKarenWorth.Text = Game.KarenWorth.ToString("$ #,##0.00");
             lblDamage.Text = Game.Dmg.ToString();
+            btnMoneyUpgrade.Text = "Upgrade Money Gained\nCost: " + Game.MoneyUpgrade.ToString("$ #,##0.00");
+            btnDamageUpgrade.Text = "Upgrade Damage Dealt\nCost: " + Game.DmgUpgrade.ToString("$ #,##0.00");
         }
 
         private void btnMoneyUpgrade_Click(object sender, EventArgs e)
         {
-           
+           if (Game.Score >= Game.MoneyUpgrade)
+            {
+                Game.Score -= Game.MoneyUpgrade;
+                Game.MoneyUpgrade *= 2;
+                Game.KarenWorth += 5;
+            }
         }
 
         private void btnDamageUpgrade_Click(object sender, EventArgs e)
         {
-
+            if (Game.Score >= Game.DmgUpgrade)
+            {
+                Game.Score -= Game.DmgUpgrade;
+                Game.DmgUpgrade *= 3;
+                Game.Dmg *= 2;
+            }
         }
     }
 }

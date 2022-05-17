@@ -10,6 +10,8 @@ namespace KarenLogic
         public static int KarensOffended { get; set; }
         public static int KarenWorth { get; set; }
         public static int Dmg { get; set; }
+        public static int DmgUpgrade { get; set; }
+        public static int MoneyUpgrade { get; set; }
         public static List<Form> openForms;
 
         static Game()
@@ -17,6 +19,8 @@ namespace KarenLogic
             openForms = new List<Form>();
             KarenWorth = 5;
             Dmg = 1;
+            MoneyUpgrade = 20;
+            DmgUpgrade = 10;
         }
 
         public static void AddToScore(int amount)
