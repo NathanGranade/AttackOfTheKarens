@@ -188,10 +188,6 @@ namespace AttackOfTheKarens
             // Positions button properly on the screen
             btnDamageUpgrade.Left = this.Width - btnDamageUpgrade.Width - 25;
             btnDamageUpgrade.Top = 600;
-            /* Added by Jakira Williams
-            // Positions button properly on the screen
-            btnLevelUpgrade.Left = this.Width - btnLevelUpgrade.Width - 25;
-            btnLevelUpgrade.Top = 700;*/
         }
 
         private void FrmMall_Load(object sender, EventArgs e)
@@ -340,15 +336,5 @@ namespace AttackOfTheKarens
         {
             Game.Score = 100000;
         }
-
-        /*private void btnLevelUpgrade_Click(object sender, EventArgs e)
-        {
-            if (Game.Score >= Game.LvlUpgrade)
-            {
-                Game.Score -= Game.LvlUpgrade;
-                Game.LvlUpgrade *= 3;
-                Game.KarenWorth *= 2;
-            }
-        }*/
     }
 }

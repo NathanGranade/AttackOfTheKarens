@@ -89,7 +89,8 @@ namespace KarenLogic
             Lvl -= LevelUp;
             if (Lvl < 0)
             {
-                Game.AddToLevel(1);
+                this.Lvl++;
+                Game.AddToLevel(Game.Level);
                 this.pic.Visible = false;
                 this.IsPresent = false;
             }
