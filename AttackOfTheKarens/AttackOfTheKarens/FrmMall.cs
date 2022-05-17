@@ -107,7 +107,7 @@ namespace AttackOfTheKarens
                     switch (c)
                     {
                         case 'K':
-                            pic = CreatePic(Properties.Resources.karen, top+10, left+10);
+                            pic = CreatePic(Properties.Resources.karen, top + 10, left + 10);
                             progbar = CreateProgbar(0, top - 20, left);
                             label = CreateLabel("", top - 20, left - 30);
                             Store s = new Store(new Karen(pic, progbar, label)
@@ -188,7 +188,6 @@ namespace AttackOfTheKarens
             // Positions button properly on the screen
             btnDamageUpgrade.Left = this.Width - btnDamageUpgrade.Width - 25;
             btnDamageUpgrade.Top = 600;
-
         }
 
         private void FrmMall_Load(object sender, EventArgs e)
@@ -303,18 +302,18 @@ namespace AttackOfTheKarens
 
         private void tmrUpdateGame_Tick(object sender, EventArgs e)
         {
-            lblMoneySaved.Text = Game.Score.ToString("$ #,##0.00");
+            lblMoneySaved.Text = Game.Score.ToString("$ #,#00.00");
             lblLevelUp.Text = Game.Level.ToString();
             lblKarensOffended.Text = Game.KarensOffended.ToString();
-            lblKarenWorth.Text = Game.KarenWorth.ToString("$ #,##0.00");
+            lblKarenWorth.Text = Game.KarenWorth.ToString("$ #,#00.00");
             lblDamage.Text = Game.Dmg.ToString();
-            btnMoneyUpgrade.Text = "Upgrade Money Gained\nCost: " + Game.MoneyUpgrade.ToString("$ #,##0.00");
-            btnDamageUpgrade.Text = "Upgrade Damage Dealt\nCost: " + Game.DmgUpgrade.ToString("$ #,##0.00");
+            btnMoneyUpgrade.Text = "Upgrade Money Gained\nCost: " + Game.MoneyUpgrade.ToString("$ #,#00.00");
+            btnDamageUpgrade.Text = "Upgrade Damage Dealt\nCost: " + Game.DmgUpgrade.ToString("$ #,#00.00");
         }
 
         private void btnMoneyUpgrade_Click(object sender, EventArgs e)
         {
-           if (Game.Score >= Game.MoneyUpgrade)
+            if (Game.Score >= Game.MoneyUpgrade)
             {
                 Game.Score -= Game.MoneyUpgrade;
                 Game.MoneyUpgrade *= 2;
