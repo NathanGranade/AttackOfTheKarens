@@ -442,7 +442,6 @@ namespace AttackOfTheKarens
                 button3Clicked = true;
                 button3.Hide();
                 button4.Show();
-                button5.Show();
             }
 
         }
