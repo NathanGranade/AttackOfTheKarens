@@ -1,0 +1,12 @@
+a----g--g---g--g----b
+|www |K 0L L1 K| www|
+|w w |  0L L1  | w w|
+|www c0-d   c-1d www|
+e--b  L       L  a--f
+|  3L           L2 K|
+|K 3L     o     L2  |
+e--d  L       L  c--f
+|www a4-b   a-5b www|
+|w w |  4L L5  | w w|
+|www |K 4L L5 K| www|
+c----h--h---h--h----d

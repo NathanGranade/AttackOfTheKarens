@@ -47,6 +47,8 @@
             this.lblKarenWorth = new System.Windows.Forms.Label();
             this.lblDamage = new System.Windows.Forms.Label();
             this.btnDemo = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panMall
@@ -165,6 +167,7 @@
             // 
             // btnDamageUpgrade
             // 
+            this.btnDamageUpgrade.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDamageUpgrade.Location = new System.Drawing.Point(1010, 457);
             this.btnDamageUpgrade.Name = "btnDamageUpgrade";
             this.btnDamageUpgrade.Size = new System.Drawing.Size(149, 51);
@@ -232,6 +235,29 @@
             this.btnDemo.UseVisualStyleBackColor = true;
             this.btnDemo.Click += new System.EventHandler(this.btnDemo_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1046, 525);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 26);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Up";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.Location = new System.Drawing.Point(1046, 557);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 26);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Down";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // FrmMall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -239,6 +265,8 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1171, 698);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDemo);
             this.Controls.Add(this.lblDamage);
             this.Controls.Add(this.lblKarenWorth);
@@ -285,5 +313,7 @@
         private System.Windows.Forms.Label lblKarenWorth;
         private System.Windows.Forms.Label lblDamage;
         private System.Windows.Forms.Button btnDemo;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

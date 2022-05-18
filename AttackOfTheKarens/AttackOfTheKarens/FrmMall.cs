@@ -25,7 +25,18 @@ namespace AttackOfTheKarens
         private int yOwner;
         private char[][] map;
         private List<Store> stores;
-
+        //added by Steve Baldwin
+        string fileContents = File.ReadAllText("data/mall.txt");
+        //will need later to determine maps
+        enum Map
+        {
+            map,
+            map1,
+            map2,
+            map3,
+        }
+        // sets the curent map to the first map
+        Map current = Map.map;
         // ctor
         public FrmMall()
         {
@@ -34,9 +45,8 @@ namespace AttackOfTheKarens
         }
 
         // functions
-        private void LoadMap()
+        private void LoadMap(string x)
         {
-            string fileContents = File.ReadAllText("data/mall.txt");
             string[] lines = fileContents.Split(Environment.NewLine);
             map = new char[lines.Length][];
             for (int i = 0; i < lines.Length; i++)
@@ -188,12 +198,20 @@ namespace AttackOfTheKarens
             // Positions button properly on the screen
             btnDamageUpgrade.Left = this.Width - btnDamageUpgrade.Width - 25;
             btnDamageUpgrade.Top = 600;
+            //Added by Steven Baldwin
+            // Positions button properly on the screen
+            button1.Left = this.Width - button1.Width - 25;
+            button1.Top = 700;
+            //Added by Steven Baldwin
+            // Positions button properly on the screen
+            button2.Left = this.Width - button2.Width - 25;
+            button2.Top = 750;
         }
 
         private void FrmMall_Load(object sender, EventArgs e)
         {
             stores = new List<Store>();
-            LoadMap();
+            LoadMap(fileContents);
             GenerateMall(colors[rand.Next(colors.Length)]);
             tmrKarenSpawner.Interval = rand.Next(1000, 5000);
             tmrKarenSpawner.Enabled = true;
@@ -335,6 +353,50 @@ namespace AttackOfTheKarens
         private void btnDemo_Click(object sender, EventArgs e)
         {
             Game.Score = 100000;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (current == Map.map)
+            {
+                current = Map.map1;
+                fileContents = File.ReadAllText("data/mall1.txt");
+                FrmMall_Load(null, null);
+            }
+            else if (current == Map.map1)
+            {
+                current = Map.map2;
+                fileContents = File.ReadAllText("data/mall2.txt");
+                FrmMall_Load(null, null);
+            }
+            else if (current == Map.map2)
+            {
+                current = Map.map3;
+                fileContents = File.ReadAllText("data/mall3.txt");
+                FrmMall_Load(null, null);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (current == Map.map3)
+            {
+                current = Map.map2;
+                fileContents = File.ReadAllText("data/mall2.txt");
+                FrmMall_Load(null, null);
+            }
+            else if (current == Map.map2)
+            {
+                current = Map.map1;
+                fileContents = File.ReadAllText("data/mall1.txt");
+                FrmMall_Load(null, null);
+            }
+            else if (current == Map.map1)
+            {
+                current = Map.map;
+                fileContents = File.ReadAllText("data/mall.txt");
+                FrmMall_Load(null, null);
+            }
         }
     }
 }
