@@ -15,6 +15,7 @@ namespace KarenLogic
         public int Col { get; set; }
         public int DefaultHealth { get; private set; }
         public int CurrHealth { get; private set; }
+        public int karenCount { get; set; }
         public int OffendedKarens { get; private set; }
         public int Lvl { get; private set; }
         public bool IsPresent { get; private set; }
@@ -78,6 +79,7 @@ namespace KarenLogic
                 this.CurrHealth = this.DefaultHealth + 10;
                 this.DefaultHealth = this.CurrHealth;
                 this.progbar.Maximum = this.CurrHealth;
+
             }
             this.progbar.Value = this.CurrHealth;
             this.label.Text = this.CurrHealth.ToString();
@@ -98,7 +100,9 @@ namespace KarenLogic
 
         public void KillAllKarens()
         {
+            if (this.IsPresent = true) { 
             Damage(CurrHealth + 1);
+            } 
         }
     }
 }

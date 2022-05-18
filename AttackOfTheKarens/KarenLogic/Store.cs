@@ -48,7 +48,7 @@
         {
             if (karen.IsPresent && containsOwner)
             {
-                karen.Damage(Game.Dmg*2);
+                karen.Damage(Game.Dmg *2); 
                 karen.LvlUp(Lvl);
                 Game.Level++;
                 this.GameScore = Game.Score;

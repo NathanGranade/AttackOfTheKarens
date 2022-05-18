@@ -295,10 +295,13 @@ namespace AttackOfTheKarens
             }
         }
 
+        int karenActive = 0;
         private void tmrKarenSpawner_Tick(object sender, EventArgs e)
         {
             Store s = stores[rand.Next(stores.Count)];
             s.ActivateTheKaren();
+            karenActive += 1;
+            
         }
 
         private void FrmMall_FormClosed(object sender, FormClosedEventArgs e)
@@ -316,7 +319,26 @@ namespace AttackOfTheKarens
                     store.Update();
                 }
             }
-           
+
+            //Temporary boost for the damage for time
+
+            
+            if (stores != null && stores.Count > 0 && button5Clicked == true)
+            {
+                int boostNumber = 5;
+                for (int i = 0; i < boostNumber; i++)
+                {
+                    foreach (Store store in stores)
+                    {
+                        store.TempUpdate();
+
+                    }
+                }
+                button5Clicked = false;
+
+                
+            }
+
         }
 
         private void tmrMoveOwner_Tick(object sender, EventArgs e)
@@ -428,7 +450,11 @@ namespace AttackOfTheKarens
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+            if (Game.Score >= 1250)
+            {
+                button5Clicked = true;
+                Game.Score -= 1250;
+            }
           
         }
 
@@ -436,6 +462,7 @@ namespace AttackOfTheKarens
         {
             if (Game.Score >= 2500)
             {
+                
                 Game.Score -= 2500;
                 foreach (Store store in stores)
                 {
