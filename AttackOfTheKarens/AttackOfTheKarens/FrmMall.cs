@@ -356,7 +356,7 @@ namespace AttackOfTheKarens
 
         private void tmrUpdateGame_Tick(object sender, EventArgs e)
         {
-            lblMoneySaved.Text = Game.Score.ToString("$ #,00.00");
+            lblMoneySaved.Text = Game.Score.ToString("$ #,#0.00");
             lblLevelUp.Text = Game.Level.ToString();
             lblKarensOffended.Text = Game.KarensOffended.ToString();
             lblKarenWorth.Text = Game.KarenWorth.ToString("$ #,#0.00");
