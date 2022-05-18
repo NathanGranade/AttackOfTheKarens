@@ -415,9 +415,9 @@ namespace AttackOfTheKarens
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(Game.Score >= 0)
+            if(Game.Score >= 300)
             {
-                Game.Score -= 0;
+                Game.Score -= 300;
                 button3Clicked = true;
                 button3.Hide();
                 button4.Show();
@@ -434,9 +434,9 @@ namespace AttackOfTheKarens
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (Game.Score >= 0)
+            if (Game.Score >= 2500)
             {
-                Game.Score -= 0;
+                Game.Score -= 2500;
                 foreach (Store store in stores)
                 {
                     store.NukeAllKarens();
