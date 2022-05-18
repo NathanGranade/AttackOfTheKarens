@@ -301,7 +301,7 @@ namespace AttackOfTheKarens
             Store s = stores[rand.Next(stores.Count)];
             s.ActivateTheKaren();
             karenActive += 1;
-            
+
         }
 
         private void FrmMall_FormClosed(object sender, FormClosedEventArgs e)
@@ -322,7 +322,7 @@ namespace AttackOfTheKarens
 
             //Temporary boost for the damage for time
 
-            
+
             if (stores != null && stores.Count > 0 && button5Clicked == true)
             {
                 int boostNumber = 5;
@@ -336,7 +336,7 @@ namespace AttackOfTheKarens
                 }
                 button5Clicked = false;
 
-                
+
             }
 
         }
@@ -345,25 +345,24 @@ namespace AttackOfTheKarens
         {
             Direction dir = (Direction)rand.Next(4);
             Move(dir);
-            if(button3Clicked == true)
+            if (button3Clicked == true)
             {
                 Direction bt3dir = (Direction)rand.Next(3);
                 Move(bt3dir);
             }
         }
 
-        
+
 
         private void tmrUpdateGame_Tick(object sender, EventArgs e)
         {
-            lblMoneySaved.Text = Game.Score.ToString("$ #,#0.00");
+            lblMoneySaved.Text = Game.Score.ToString("$ #,00.00");
             lblLevelUp.Text = Game.Level.ToString();
             lblKarensOffended.Text = Game.KarensOffended.ToString();
             lblKarenWorth.Text = Game.KarenWorth.ToString("$ #,#0.00");
             lblDamage.Text = Game.Dmg.ToString();
             btnMoneyUpgrade.Text = "Upgrade Money Gained\nCost: " + Game.MoneyUpgrade.ToString("$ #,#0.00");
             btnDamageUpgrade.Text = "Upgrade Damage Dealt\nCost: " + Game.DmgUpgrade.ToString("$ #,#0.00");
-            //btnLevelUpgrade.Text = "Upgrade Level\nCost: " + Game.LvlUpgrade.ToString("$ #,#00.00");
         }
 
         private void btnMoneyUpgrade_Click(object sender, EventArgs e)
@@ -437,7 +436,7 @@ namespace AttackOfTheKarens
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(Game.Score >= 300)
+            if (Game.Score >= 300)
             {
                 Game.Score -= 300;
                 button3Clicked = true;
@@ -455,14 +454,14 @@ namespace AttackOfTheKarens
                 button5Clicked = true;
                 Game.Score -= 1250;
             }
-          
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             if (Game.Score >= 2500)
             {
-                
+
                 Game.Score -= 2500;
                 foreach (Store store in stores)
                 {
@@ -470,7 +469,7 @@ namespace AttackOfTheKarens
                 }
 
             }
-            
+
         }
 
     }
