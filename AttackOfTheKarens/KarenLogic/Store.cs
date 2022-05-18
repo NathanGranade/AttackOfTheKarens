@@ -43,5 +43,22 @@
                 LevelScore = Game.Score;
             }
         }
+
+        public void TempUpdate()
+        {
+            if (karen.IsPresent && containsOwner)
+            {
+                karen.Damage(Game.Dmg*2);
+                karen.LvlUp(Lvl);
+                Game.Level++;
+                this.GameScore = Game.Score;
+                LevelScore = Game.Score;
+            }
+        }
+
+        public void NukeAllKarens()
+        {
+            karen.KillAllKarens();
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace AttackOfTheKarens
 {
@@ -25,6 +26,10 @@ namespace AttackOfTheKarens
         private int yOwner;
         private char[][] map;
         private List<Store> stores;
+        private bool button3Clicked;
+        private bool button4Clicked;
+        private bool button5Clicked;
+        private Stopwatch timer = new Stopwatch();
         //added by Steve Baldwin
         string fileContents = File.ReadAllText("data/mall.txt");
         //will need later to determine maps
@@ -215,6 +220,7 @@ namespace AttackOfTheKarens
             GenerateMall(colors[rand.Next(colors.Length)]);
             tmrKarenSpawner.Interval = rand.Next(1000, 5000);
             tmrKarenSpawner.Enabled = true;
+            tmrDamageBoost.Interval = 15000;
             player = new SoundPlayer();
             //player.SoundLocation = "data/mall music.wav";
             player.PlayLooping();
@@ -310,13 +316,21 @@ namespace AttackOfTheKarens
                     store.Update();
                 }
             }
+           
         }
 
         private void tmrMoveOwner_Tick(object sender, EventArgs e)
         {
             Direction dir = (Direction)rand.Next(4);
             Move(dir);
+            if(button3Clicked == true)
+            {
+                Direction bt3dir = (Direction)rand.Next(3);
+                Move(bt3dir);
+            }
         }
+
+        
 
         private void tmrUpdateGame_Tick(object sender, EventArgs e)
         {
@@ -398,5 +412,39 @@ namespace AttackOfTheKarens
                 FrmMall_Load(null, null);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(Game.Score >= 0)
+            {
+                Game.Score -= 0;
+                button3Clicked = true;
+                button3.Hide();
+                button4.Show();
+                button5.Show();
+            }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
+          
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (Game.Score >= 0)
+            {
+                Game.Score -= 0;
+                foreach (Store store in stores)
+                {
+                    store.NukeAllKarens();
+                }
+
+            }
+            
+        }
+
     }
 }

@@ -95,5 +95,10 @@ namespace KarenLogic
                 this.IsPresent = false;
             }
         }
+
+        public void KillAllKarens()
+        {
+            Damage(CurrHealth + 1);
+        }
     }
 }
